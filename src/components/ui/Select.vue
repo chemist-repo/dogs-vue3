@@ -80,7 +80,6 @@ export default defineComponent({
     }
 
     return {
-      ...props,
       ...methods,
       filteredOptions,
       active

@@ -31,13 +31,15 @@ export default {
       const startHeightForEvent = document.documentElement.offsetHeight * offsetRatioForEvent
 
       if (currentScrollTop >= startHeightForEvent && !isBreedDogsAction) {
-        await store.dispatch('getMoreBreedRandomDogsList')
+        await store.dispatch('getMoreBreedRandomDogsList', route.params.breed)
       }
     }
 
     watch(
       () => route.params.breed,
-      async (breed) => store.dispatch('getBreedRandomDogsList', breed)
+      async (breed) => {
+        if (breed) await store.dispatch('getBreedRandomDogsList', breed)
+      }
     )
     onMounted(() => store.dispatch('getBreedRandomDogsList', route.params.breed))
 
