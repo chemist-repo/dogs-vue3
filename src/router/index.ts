@@ -14,6 +14,12 @@ export default createRouter({
       component: () => import(/* webpackChunkName: "Favorites" */ '../views/Favorites.vue')
     },
     {
+      path: '/b',
+      redirect: {
+        name: 'Home'
+      }
+    },
+    {
       path: '/b/:breed',
       name: 'Breed',
       component: () => import(/* webpackChunkName: "Breed" */ '../views/Breed.vue')
