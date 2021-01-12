@@ -50,8 +50,8 @@ export default {
     const allBreedsList = computed(() => store.state.allBreedsList)
 
     watch(
-      () => route.params.breed,
-      () => { active.value = false }
+      () => route.params,
+      () => active.value = false
     )
     onMounted(async () => {
       await store.dispatch('getAllBreedsList')
