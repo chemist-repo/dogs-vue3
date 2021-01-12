@@ -1,3 +1,5 @@
+const publicPath = process.env.NODE_ENV === 'production' ? process.env.VUE_APP_REPO_NAME : '/'
+
 module.exports = {
   chainWebpack: config => {
     config.module
