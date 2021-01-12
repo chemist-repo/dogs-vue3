@@ -19,10 +19,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { mapMutations } from 'vuex'
 import PartialCard from './Card.vue'
-
-import ls from '@/helpers/ls'
+import { setFavorite } from '@/helpers/favorites'
 
 export default defineComponent({
   name: 'PartialList',
@@ -39,22 +37,9 @@ export default defineComponent({
       default: () => []
     }
   },
-  methods: {
-    ...mapMutations([
-      'SET_FAVORITES'
-    ]),
-    setFavorite (url: string) {
-      const favorites = ls.get('favorites') || []
-      let $favorites = []
-
-      if (favorites.includes(url)) {
-        $favorites = favorites.filter((favorite: string) => favorite !== url)
-      } else {
-        $favorites = [...favorites, url]
-      }
-
-      this.SET_FAVORITES($favorites)
-      ls.set('favorites', $favorites)
+  setup () {
+    return {
+      setFavorite
     }
   }
 })

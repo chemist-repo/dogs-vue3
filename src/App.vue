@@ -6,13 +6,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted } from 'vue'
+import { getFavorites } from '@/helpers/favorites'
 import PartialHeader from '@/components/partials/Header.vue'
 
 export default defineComponent({
   name: 'app',
   components: {
     PartialHeader
+  },
+  setup () {
+    onMounted(getFavorites)
+    return {}
   }
 })
 </script>
