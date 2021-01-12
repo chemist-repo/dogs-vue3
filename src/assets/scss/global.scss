@@ -5,4 +5,8 @@ body {
   font-size: $global-size;
   line-height: 1.25;
   min-height: 100vh;
+
+  .__app__ {
+    background-color: rgba($color-primary, 0.1);
+  }
 }

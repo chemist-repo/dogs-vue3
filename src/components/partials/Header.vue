@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { PUBLIC_PATH } from '@/constants'
@@ -49,6 +49,10 @@ export default {
     const breed = computed(() => route.params.breed)
     const allBreedsList = computed(() => store.state.allBreedsList)
 
+    watch(
+      () => route.params.breed,
+      () => { active.value = false }
+    )
     onMounted(async () => {
       await store.dispatch('getAllBreedsList')
     })
